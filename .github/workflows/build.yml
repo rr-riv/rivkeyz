@@ -1,10 +1,13 @@
-name: Build Keyboard Firmware
+name: Build ZMK Firmware
 
 on:
   push:
-    branches:
-      - "**"
+    branches: [ "main" ]
+  pull_request:
 
 jobs:
   build:
-    uses: sekigon-gonnoc/vial-keymap-c-editor/.github/workflows/build-keymap.yml@main
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+    with:
+      board: "rivkey"   # ← 後であなたのコントローラ名に変えてください
+      shield: "riv1 riv2"   # ← Auto-KDK生成データから左と右の名前を入れてください（スペースで区切る）
