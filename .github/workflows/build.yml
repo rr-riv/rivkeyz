@@ -1,12 +1,8 @@
-
-include:
-  - board: akdk_bt1
-    shield: rivkey_left
-    snippet: studio-rpc-usb-uart
-    cmake-args: -DCONFIG_ZMK_STUDIO=y
-  - board: akdk_bt1
-    shield: rivkey_right
-    snippet: studio-rpc-usb-uart
-    cmake-args: -DCONFIG_ZMK_STUDIO=y
-  - board: akdk_bt1
-    shield: settings_reset
+name: Build Keyboard Firmware
+on:
+  push:
+    branches:
+      - "**"
+jobs:
+  build:
+    uses: sekigon-gonnoc/vial-keymap-c-editor/.github/workflows/build-keymap.yml@main
